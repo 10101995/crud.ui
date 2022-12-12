@@ -1,18 +1,22 @@
 <div class="container my-5">
     <h1 class="mb-10">Mes projets</h1>
 
-    <div class="row">
+    <div class="row" *ngIf="projets && projets.length > 0">
         <div *ngFor="let projet of projets" class="col-md-4 mb-5">
-            <div class="card bg-dark text-white">
-                <div class="img-view">
-                    <img src="{{ projet.images }}" class="card-img" alt="...">
-                </div>
-                <div class="card-img-overlay">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ projet.images }}" class="card-img-top" alt="...">
+                <div class="card-body">
                   <h5 class="card-title">{{ projet.name }}</h5>
                   <p class="card-text">{{ projet.description }}</p>
-                  <p class="card-text">{{ projet.link }}</p>
+                  <a href="{{ projet.link }}" target="_blank" class="btn btn-primary">Voir le projet</a>
                 </div>
               </div>
         </div>
+    </div>
+
+
+
+    <div *ngIf="!projets || projets.length <= 0" class="alert-danger">
+        <p>Aucun projet trouvé pour l'instant</p>
     </div>
 </div>
